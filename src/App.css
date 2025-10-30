@@ -1,42 +1,132 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.app {
+  min-height: 100vh;
+  width: 100vw;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  min-height: 90vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  background: transparent;
+  padding: 2rem 1rem;
+}
+
+.header {
+  width: 100%;
   text-align: center;
+  margin-left: 12.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo-icon {
+  font-size: 3.3rem;
+  color: #ffe900;
+  filter: drop-shadow(0 0 18px #fff700cc);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-left: 0;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.65rem;
+  background: linear-gradient(
+    92deg,
+    #ffe900 15%,
+    #fffbe3 30%,
+    #000000 60%,
+    #ffe066 100%
+  );
+  background-size: 250% 250%;
+  background-position: 0% 70%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: ethwallet-shimmer 2.8s infinite linear;
+  text-shadow:
+    0 1px 14px #ffe90066,
+    0 2px 16px #0009;
+}
+
+@keyframes ethwallet-shimmer {
+  0% {
+    background-position: 0% 70%;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    background-position: 100% 70%;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.title-main {
+  font-weight: 900;
+  background: linear-gradient(90deg, #fff900 42%, #ffe900 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: brightness(1.55) drop-shadow(0 0 14px #ffe900cc);
+  letter-spacing: 0.01em;
+}
+
+.title-accent {
+  font-weight: 700;
+  background: linear-gradient(90deg, #f6ff00 25%, #ffe066 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: brightness(1.22) drop-shadow(0 0 6px #ffe06655);
+  animation: accent-shimmer 2.2s infinite linear;
+  text-shadow:
+    0 1px 5px #ffe06644,
+    0 2px 7px #f6ff0044;
+}
+
+@keyframes accent-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
   }
 }
 
-.card {
-  padding: 2em;
+.subtitle {
+  font-size: 1.1rem;
+  color: #eaeaea;
+  opacity: 0.8;
+  margin: 0;
+  margin-top: 0.5rem;
+  max-width: 420px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  text-align: left;
 }
 
-.read-the-docs {
-  color: #888;
-}
+/* No extra backgrounds or effects */

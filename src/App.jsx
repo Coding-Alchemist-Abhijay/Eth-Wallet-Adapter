@@ -1,34 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { WagmiProvider } from 'wagmi'
+import { config } from './.config.ts'
+import ConnectWallet from './components/ConnectWallet'
+import CheckBalance from './components/CheckBalance'
+import Transaction from './components/Transaction'
 import './App.css'
 
+const queryClient = new QueryClient()
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}> 
+    <div className="app">
+      <div className="background-effects">
+        <div className="gradient-orb orb-1"></div>
+        <div className="gradient-orb orb-2"></div>
+        <div className="gradient-orb orb-3"></div>
+        <div className="floating-particles"></div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      
+      <div className="container">
+        <header className="header">
+          <div className="logo-section">
+            <div className="logo-icon">⚡</div>
+            <h1 className="title">
+              <span className="title-main">ETH</span>
+              <span className="title-accent">Wallet</span>
+            </h1>
+          </div>
+          <p className="subtitle">
+            Modern Ethereum wallet adapter with seamless blockchain interaction
+          </p>
+        </header>
+
+        <div className="components-stack">
+          <ConnectWallet
+          />
+          
+          <CheckBalance  />
+          
+          <Transaction  />
+        </div>
+
+        <footer className="footer">
+          <div className="footer-content">
+            <p>Powered by Ethereum blockchain technology</p>
+            <div className="footer-links">
+              <span>🔒 Secure</span>
+              <span>⚡ Fast</span>
+              <span>🌍 Decentralized</span>
+            </div>
+          </div>
+        </footer>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
+    </QueryClientProvider> 
+  </WagmiProvider>
   )
 }
 
