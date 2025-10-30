@@ -44,7 +44,6 @@
   border-radius: 20px;
   padding: 2px;
   background: linear-gradient(90deg, #FFD70033, #FFEA7033, #FFD70033);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: borderGlow 3s linear infinite;
@@ -139,7 +138,6 @@
   font-weight: 800;
   font-family: 'Courier New', monospace;
   background: var(--accent-gradient);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: countUp 0.8s ease-out;
 }
