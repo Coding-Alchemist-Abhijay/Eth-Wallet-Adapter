@@ -1,0 +1,251 @@
+:root {
+  --primary-yellow: #FFD700;
+  --secondary-yellow: #FFEA70;
+  --bright-yellow: #FFE55C;
+  --primary-black: #0A0A0A;
+  --secondary-black: #111111;
+  --yellow-gradient: linear-gradient(90deg, #FFD700, #FFEA70);
+  --black-gradient: linear-gradient(145deg, #0A0A0A, #1A1A1A);
+  --accent-gradient: linear-gradient(90deg, #FFE55C, #FFD700);
+}
+
+/* ====== Base Fade Animation ====== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Container ====== */
+.check-balance-container {
+  width: 100%;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* ====== Card ====== */
+.balance-card {
+  background: var(--black-gradient);
+  border: 2px solid rgba(255, 215, 0, 0.25);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 10px rgba(255, 215, 0, 0.1),
+    0 0 30px rgba(255, 215, 0, 0.05);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Subtle animated edge glow */
+.balance-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(90deg, #FFD70033, #FFEA7033, #FFD70033);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.3; filter: drop-shadow(0 0 3px #FFD700); }
+  50% { opacity: 0.8; filter: drop-shadow(0 0 6px #FFD700); }
+  100% { opacity: 0.3; filter: drop-shadow(0 0 3px #FFD700); }
+}
+
+/* ====== Hover ====== */
+.balance-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 20px rgba(255, 215, 0, 0.2),
+    0 0 60px rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* ====== Header ====== */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.balance-icon {
+  position: relative;
+  font-size: 2.2rem;
+  color: var(--primary-yellow);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  animation: iconFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.icon-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 65px;
+  height: 65px;
+  background: var(--yellow-gradient);
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(20px);
+  transform: translate(-50%, -50%);
+}
+
+/* ====== Header Content ====== */
+.header-content {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-yellow);
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.wallet-address {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 215, 0, 0.05);
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+/* ====== Balance Display ====== */
+.balance-display {
+  background: rgba(255, 215, 0, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.balance-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: countUp 0.8s ease-out;
+}
+
+@keyframes countUp {
+  from { transform: translateY(15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.balance-currency {
+  font-size: 1.1rem;
+  color: var(--secondary-yellow);
+}
+
+.balance-usd {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ====== Check Balance Button ====== */
+.check-balance-btn {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--black-gradient);
+  color: var(--primary-yellow);
+  border: 2px solid var(--primary-yellow);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  margin-top: 1rem;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.check-balance-btn:hover {
+  background: var(--yellow-gradient);
+  color: var(--primary-black);
+  border-color: var(--bright-yellow);
+  box-shadow:
+    0 0 25px rgba(255, 215, 0, 0.4),
+    0 0 50px rgba(255, 215, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.check-balance-btn:active {
+  transform: translateY(-1px);
+}
+
+.btn-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  transition: transform 0.4s ease;
+}
+
+.check-balance-btn:hover .btn-icon {
+  transform: rotate(10deg) scale(1.2);
+}
+
+/* ====== Stats ====== */
+.balance-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 215, 0, 0.04);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 215, 0, 0.08);
+  border-color: rgba(255, 215, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--primary-yellow);
+  font-size: 0.9rem;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .balance-card { padding: 1.5rem; }
+  .balance-stats { flex-direction: column; gap: 0.8rem; }
+}
